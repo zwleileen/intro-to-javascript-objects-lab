@@ -33,14 +33,14 @@ game.difficulty = "Easy";
 
 // Exercise 4
 // console.log(Array.isArray(game.party));
-game.party.push(pokemon[0].name);
+game.party.push(pokemon[0]);
 console.log("Exercise 4", game.party);
 
 // Exercise 5
 for (let i = 1; i < 50; i++) {
   if (pokemon[i].type === "grass" && pokemon[i].hp >= 40) {
     if (game.party.length < 4) {
-      game.party.push(pokemon[i].name);
+      game.party.push(pokemon[i]);
     } else {
     }
   }
@@ -48,8 +48,36 @@ for (let i = 1; i < 50; i++) {
 console.log("Exercise 5", game.party);
 
 // Exercise 6
+let col = game.gyms.length - 1; //returns index of last column of array
+for (let g = 0; g < col; g++) {
+  if (game.gyms[g].difficulty < 3) {
+    game.gyms[g].completed = true;
+  }
+}
+console.log("Exercise 6", game.gyms);
 
-// if (pokemon[3].starter === true) {
-//   console.log(pokemon[3].name);
-// } else {
-// }
+// Exercise 7
+for (let e = 0; e < game.party.length; e++) {
+  if (game.party[e].name === "Bulbasaur") {
+    //why does this also change the "Bulbasaur" in pokemon data?
+    game.party[e].name = "Ivysaur";
+  } else if (game.party[e].name === "Charmander") {
+    game.party[e].name = "Charmeleon";
+  } else if (game.party[e].name === "Squirtle") {
+    game.party[e].name = "Wartortle";
+  } else if (game.party[e].name === "Pikachu") {
+    game.party[e].name = "Raichu";
+  } else {
+  }
+}
+console.log("Exercise 7", game.party);
+
+// Exercise 8
+game.party.forEach((item) => console.log("Exercise 8", item.name));
+
+// Exercise 9
+pokemon
+  .filter((i) => i.starter === true) //filter() creates a new array and assigns every i in pokemon that has starter=true
+  .forEach((i) => console.log("Exercise 9", i.name));
+
+// Exercise 10
