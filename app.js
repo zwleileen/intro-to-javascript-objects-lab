@@ -57,18 +57,24 @@ for (let i = 0; i < game.gyms.length; i++) {
 }
 console.log("Exercise 6", game.gyms);
 
-// Exercise 7
+// Exercise 7 --> trying switch
 for (let i = 0; i < game.party.length; i++) {
-  if (game.party[i].name === "Bulbasaur") {
-    //why does this also change the "Bulbasaur" in pokemon data?
-    game.party[i].name = "Ivysaur";
-  } else if (game.party[i].name === "Charmander") {
-    game.party[i].name = "Charmeleon";
-  } else if (game.party[i].name === "Squirtle") {
-    game.party[i].name = "Wartortle";
-  } else if (game.party[i].name === "Pikachu") {
-    game.party[i].name = "Raichu";
-  } else {
+  switch (game.party[i].name) {
+    case "Bulbasaur":
+      //why does this also change the "Bulbasaur" in pokemon data?
+      game.party[i].name = "Ivysaur";
+      break;
+    case "Charmander":
+      game.party[i].name = "Charmeleon";
+      break;
+    case "Squirtle":
+      game.party[i].name = "Wartortle";
+      break;
+    case "Pikachu":
+      game.party[i].name = "Raichu";
+      break;
+    default:
+      break;
   }
 }
 console.log("Exercise 7", game.party);
@@ -87,17 +93,17 @@ game.catchPokemon = (pokemonObj) => {
   //catchPokemon is a method because it represents an action that game object can perform
   game.party.push(pokemonObj);
 };
-game.catchPokemon(pokemonCopy[1]);
-console.log("Exercise 10", game.party); //returns Ivysaur as the fifth item
+game.catchPokemon(pokemonCopy[10]);
+console.log("Exercise 10", game.party); //returns Metapod as the fifth item
 
 // Exercise 11
 // console.log(game.items[1].quantity);
 game.catchPokemon = (pokemonObj) => {
   game.party.push(pokemonObj);
   game.items[1].quantity--; //decrement of 1, opposite of ++
-  console.log(game.items[1].quantity);
 };
-game.catchPokemon(pokemonCopy[1]);
+game.catchPokemon(pokemonCopy[20]);
+// game.catchPokemon(pokemonCopy[30]);
 console.log("Exercise 11", game.items); //pokeball quantity reduces from 8 to 7
 
 // Exercise 12
@@ -126,3 +132,20 @@ game.gymStatus();
 console.log("Exercise 13", gymTally);
 
 // Exercise 14
+game.partyCount = () => {
+  return game.party.length;
+};
+console.log("Exercise 14", game.partyCount()); //return 6 items
+// console.log(game.party);
+
+// Exercise 15
+for (let i = 0; i < game.gyms.length; i++) {
+  if (game.gyms[i].difficulty < 8) {
+    game.gyms[i].completed = true;
+  }
+}
+console.log("Exercise 15", game.gyms);
+
+// Exercise 16
+console.log("------------------");
+console.log("Exercise 16", game);
