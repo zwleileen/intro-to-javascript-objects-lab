@@ -4,7 +4,7 @@ const pokemon = require("./data.js");
 const game = {
   party: [],
   gyms: [
-    //remember that this game.gyms is not a multidimensional array, it is a single array made up of objects
+    //notes: remember that this game.gyms is not a multidimensional array, it is a single array made up of objects
     { location: "Pewter City", completed: false, difficulty: 1 },
     { location: "Cerulean City", completed: false, difficulty: 2 },
     { location: "Vermilion City", completed: false, difficulty: 3 },
@@ -30,11 +30,9 @@ console.log("Exercise 1", pokemon[58].name);
 
 // Exercise 3
 game.difficulty = "Easy";
-// console.log(game);
 
 // Exercise 4
-// console.log(Array.isArray(game.party));
-const pokemonCopy = pokemon.map((p) => ({ ...p })); //to create a deep copy of pokemon array with all its nested objects, else exercise 7 will change the content of pokemon array
+const pokemonCopy = pokemon.map((p) => ({ ...p })); //notes: to create a deep copy of pokemon array with all its nested objects, else exercise 7 will change the content of pokemon array
 game.party.push(pokemonCopy[0]);
 console.log("Exercise 4", game.party);
 
@@ -61,7 +59,7 @@ console.log("Exercise 6", game.gyms);
 for (let i = 0; i < game.party.length; i++) {
   switch (game.party[i].name) {
     case "Bulbasaur":
-      //why does this also change the "Bulbasaur" in pokemon data?
+      //question: why does this also change the "Bulbasaur" in pokemon data?
       game.party[i].name = "Ivysaur";
       break;
     case "Charmander":
@@ -78,33 +76,30 @@ for (let i = 0; i < game.party.length; i++) {
   }
 }
 console.log("Exercise 7", game.party);
-// console.log(pokemon[0].name);
 
 // Exercise 8
 game.party.forEach((item) => console.log("Exercise 8:", item.name));
 
 // Exercise 9 -->trying out filter and foreach together
 pokemon
-  .filter((p) => p.starter === true) //filter() creates a new array and assigns every p in pokemon that has starter=true
+  .filter((p) => p.starter === true) //notes: filter() creates a new array and assigns every p in pokemon that has starter=true
   .forEach((p) => console.log("Exercise 9", p.name));
 
 // Exercise 10
 game.catchPokemon = (pokemonObj) => {
-  //catchPokemon is a method because it represents an action that game object can perform
   game.party.push(pokemonObj);
 };
 game.catchPokemon(pokemonCopy[10]);
-console.log("Exercise 10", game.party); //returns Metapod as the fifth item
+console.log("Exercise 10", game.party); //notes: returns Metapod as the fifth item
 
 // Exercise 11
-// console.log(game.items[1].quantity);
 game.catchPokemon = (pokemonObj) => {
   game.party.push(pokemonObj);
-  game.items[1].quantity--; //decrement of 1, opposite of ++
+  game.items[1].quantity--; //notes: decrement of 1, opposite of ++
 };
 game.catchPokemon(pokemonCopy[20]);
 // game.catchPokemon(pokemonCopy[30]);
-console.log("Exercise 11", game.items); //pokeball quantity reduces from 8 to 7
+console.log("Exercise 11", game.items);
 
 // Exercise 12
 for (let i = 0; i < game.gyms.length; i++) {
@@ -135,8 +130,7 @@ console.log("Exercise 13", gymTally);
 game.partyCount = () => {
   return game.party.length;
 };
-console.log("Exercise 14", game.partyCount()); //return 6 items
-// console.log(game.party);
+console.log("Exercise 14", game.partyCount());
 
 // Exercise 15
 for (let i = 0; i < game.gyms.length; i++) {
