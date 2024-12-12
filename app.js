@@ -81,3 +81,7 @@ pokemon
   .forEach((i) => console.log("Exercise 9", i.name));
 
 // Exercise 10
+game.catchPokemon = function (pokemonObj) {
+  game.party.push(pokemonObj);
+};
+game.catchPokemon();
