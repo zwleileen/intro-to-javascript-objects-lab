@@ -4,6 +4,7 @@ const pokemon = require("./data.js");
 const game = {
   party: [],
   gyms: [
+    //remember that this game.gyms is not a multidimensional array, it is a single array made up of objects
     { location: "Pewter City", completed: false, difficulty: 1 },
     { location: "Cerulean City", completed: false, difficulty: 2 },
     { location: "Vermilion City", completed: false, difficulty: 3 },
@@ -49,8 +50,7 @@ for (let i = 1; i < pokemonCopy.length; i++) {
 console.log("Exercise 5", game.party);
 
 // Exercise 6
-let col = game.gyms.length - 1; //returns index of last column of array
-for (let i = 0; i < col; i++) {
+for (let i = 0; i < game.gyms.length; i++) {
   if (game.gyms[i].difficulty < 3) {
     game.gyms[i].completed = true;
   }
@@ -98,11 +98,10 @@ game.catchPokemon = (pokemonObj) => {
   console.log(game.items[1].quantity);
 };
 game.catchPokemon(pokemonCopy[1]);
-console.log("Exercise 11", game.items);
+console.log("Exercise 11", game.items); //pokeball quantity reduces from 8 to 7
 
 // Exercise 12
-let col2 = game.gyms.length - 1; //returns index of last column of array
-for (let i = 0; i < col2; i++) {
+for (let i = 0; i < game.gyms.length; i++) {
   if (game.gyms[i].difficulty < 6) {
     game.gyms[i].completed = true;
   }
@@ -110,3 +109,20 @@ for (let i = 0; i < col2; i++) {
 console.log("Exercise 12", game.gyms);
 
 // Exercise 13
+let gymTally = {
+  completed: 0,
+  incomplete: 0,
+};
+game.gymStatus = () => {
+  for (let i = 0; i < game.gyms.length; i++) {
+    if (game.gyms[i].completed === true) {
+      gymTally.completed++;
+    } else {
+      gymTally.incomplete++;
+    }
+  }
+};
+game.gymStatus();
+console.log("Exercise 13", gymTally);
+
+// Exercise 14
