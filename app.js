@@ -33,14 +33,15 @@ game.difficulty = "Easy";
 
 // Exercise 4
 // console.log(Array.isArray(game.party));
-game.party.push(pokemon[0]);
+const pokemonCopy = pokemon.map((p) => ({ ...p })); //to create a deep copy of pokemon array with all its nested objects, else exercise 7 will change the content of pokemon array
+game.party.push(pokemonCopy[0]);
 console.log("Exercise 4", game.party);
 
 // Exercise 5
-for (let i = 1; i < 50; i++) {
-  if (pokemon[i].type === "grass" && pokemon[i].hp >= 40) {
+for (let i = 1; i < pokemonCopy.length; i++) {
+  if (pokemonCopy[i].type === "grass" && pokemonCopy[i].hp >= 40) {
     if (game.party.length < 4) {
-      game.party.push(pokemon[i]);
+      game.party.push(pokemonCopy[i]);
     } else {
     }
   }
@@ -49,36 +50,37 @@ console.log("Exercise 5", game.party);
 
 // Exercise 6
 let col = game.gyms.length - 1; //returns index of last column of array
-for (let g = 0; g < col; g++) {
-  if (game.gyms[g].difficulty < 3) {
-    game.gyms[g].completed = true;
+for (let i = 0; i < col; i++) {
+  if (game.gyms[i].difficulty < 3) {
+    game.gyms[i].completed = true;
   }
 }
 console.log("Exercise 6", game.gyms);
 
 // Exercise 7
-for (let e = 0; e < game.party.length; e++) {
-  if (game.party[e].name === "Bulbasaur") {
+for (let i = 0; i < game.party.length; i++) {
+  if (game.party[i].name === "Bulbasaur") {
     //why does this also change the "Bulbasaur" in pokemon data?
-    game.party[e].name = "Ivysaur";
-  } else if (game.party[e].name === "Charmander") {
-    game.party[e].name = "Charmeleon";
-  } else if (game.party[e].name === "Squirtle") {
-    game.party[e].name = "Wartortle";
-  } else if (game.party[e].name === "Pikachu") {
-    game.party[e].name = "Raichu";
+    game.party[i].name = "Ivysaur";
+  } else if (game.party[i].name === "Charmander") {
+    game.party[i].name = "Charmeleon";
+  } else if (game.party[i].name === "Squirtle") {
+    game.party[i].name = "Wartortle";
+  } else if (game.party[i].name === "Pikachu") {
+    game.party[i].name = "Raichu";
   } else {
   }
 }
 console.log("Exercise 7", game.party);
+// console.log(pokemon[0].name);
 
 // Exercise 8
 game.party.forEach((item) => console.log("Exercise 8", item.name));
 
 // Exercise 9
 pokemon
-  .filter((i) => i.starter === true) //filter() creates a new array and assigns every i in pokemon that has starter=true
-  .forEach((i) => console.log("Exercise 9", i.name));
+  .filter((p) => p.starter === true) //filter() creates a new array and assigns every i in pokemon that has starter=true
+  .forEach((p) => console.log("Exercise 9", p.name));
 
 // Exercise 10
 game.catchPokemon = function (pokemonObj) {
