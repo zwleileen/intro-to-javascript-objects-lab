@@ -86,4 +86,6 @@ pokemon
 game.catchPokemon = function (pokemonObj) {
   game.party.push(pokemonObj);
 };
-game.catchPokemon();
+game.catchPokemon(pokemonCopy[0]);
+console.log(game);
+////
