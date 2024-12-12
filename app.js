@@ -77,15 +77,27 @@ console.log("Exercise 7", game.party);
 // Exercise 8
 game.party.forEach((item) => console.log("Exercise 8", item.name));
 
-// Exercise 9
-pokemon
-  .filter((p) => p.starter === true) //filter() creates a new array and assigns every i in pokemon that has starter=true
+// Exercise 9 -->trying out filter and foreach together
+pokemonCopy
+  .filter((p) => p.starter === true) //filter() creates a new array and assigns every p in pokemon that has starter=true
   .forEach((p) => console.log("Exercise 9", p.name));
 
 // Exercise 10
-game.catchPokemon = function (pokemonObj) {
+game.catchPokemon = (pokemonObj) => {
+  //catchPokemon is a method because it represents an action that game object can perform
   game.party.push(pokemonObj);
 };
 game.catchPokemon(pokemonCopy[0]);
-console.log(game);
-////
+console.log("Exercise 10", game.party); //returns Ivysaur as the fifth item
+
+// Exercise 11
+// console.log(game.items[1].quantity);
+game.catchPokemon = (pokemonObj) => {
+  game.party.push(pokemonObj);
+  game.items[1].quantity--; //decrement of 1, opposite of ++
+  console.log(game.items[1].quantity);
+};
+game.catchPokemon(pokemonCopy[0]);
+console.log("Exercise 11", game.items);
+
+// Exercise 12
