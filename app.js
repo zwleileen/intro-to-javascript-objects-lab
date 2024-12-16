@@ -102,11 +102,15 @@ game.catchPokemon(pokemonCopy[20]);
 console.log("Exercise 11", game.items);
 
 // Exercise 12
-for (let i = 0; i < game.gyms.length; i++) {
-  if (game.gyms[i].difficulty < 6) {
-    game.gyms[i].completed = true;
+const completeGymsLessThan6 = (level) => {
+  //notes:practice putting everything into a function
+  for (let i = 0; i < game.gyms.length; i++) {
+    if (game.gyms[i].difficulty < level) {
+      game.gyms[i].completed = true;
+    }
   }
-}
+};
+completeGymsLessThan6(6);
 console.log("Exercise 12", game.gyms);
 
 // Exercise 13
